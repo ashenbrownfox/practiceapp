@@ -5,24 +5,31 @@ class Form extends Component {
       super()
       this.state = {
           firstName: "",
-          lastName: ""
+          lastName: "",
+          age: 0,
+          gender: "",
+          destination: "",
+          dietaryRestrictions: []
       }
       this.handleChange = this.handleChange.bind(this)
   }
   handleChange(event){
+      const {name, value} = event.target
       this.setState({
-          [event.target.name]: event.target.value
+          [name]: value
       })
   }
   render(){
       return (
           <form>
-              <input type="text" name="firstName" placeholder="First Name" onChange={this.handleChange} />
+              <input type="text" name="firstName" placeholder="First Name" onChange={this.handleChange} value={this.state.firstName} />
               <br/>
-              <input type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange} />
-              
-              <h1>{this.state.firstName}{this.state.lastName}</h1>
-
+              <input type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange} value={this.state.lastName} />
+              <br/>
+              <input type="text" name="age" placeholder="Age" placeholder="Last Name" onChange={this.handleChange} value={this.state.age}/>
+              <button>Submit</button>
+              <p>Your name {this.state.firstName} {this.state.lastName}</p>
+              <p>Your age: {this.state.age}</p>         
           </form>
       )
   }
